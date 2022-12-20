@@ -8,9 +8,9 @@ const ConnectBtn = (props) => {
   const clickHandler = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", [])
-    const user = provider.getSigner();
-    const addres=await user.getAddress()
-    props.clickLift(addres);
+    const user = await provider.getSigner();
+    setIsConnected(true);
+    props.clickLift(user);
   };
 
   return (
